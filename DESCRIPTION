@@ -1,0 +1,11 @@
+Package: MyRTools
+Type: Package
+Title: Some functions frequently used in my work
+Version: 0.1.0
+Author: Yongchao Zhang
+Maintainer: The package maintainer <zhangyongchao@nibs.ac.cn>
+Description: This package includes some functions frequently used in my work.
+    Thanks to rstudio and github for providing such a easy way to create and store my package.
+License: GPL
+Encoding: UTF-8
+LazyData: true
