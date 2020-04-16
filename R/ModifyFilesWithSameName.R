@@ -35,10 +35,6 @@ BatchModifyFile <- function(Dir, FileName, KeyWordOldLocation, keyWordOld, keyWo
     stop("Error, Please cheack the if the Dir exist!")
   }
 
-  if ( !exists("FileName") | !exists("KeyWordOldLocation") | !exists("keyWordOld")){
-    stop("Error, please input the requested parameters!")
-  }
-
   all.dirs <- list.dirs()
   file.find.index <- TRUE
   for (poss.dir in all.dirs) {
