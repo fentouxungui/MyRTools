@@ -29,7 +29,7 @@
 #' BatchModifyFile("./","app.R","min.cutoff =",",min.cutoff = \"q9\"","") # Check the 'KeyWordOldLocation'! and the replacement!
 #' BatchModifyFile("./","app.R","min.cutoff =",",min.cutoff = \"q9\"","",Replace = TRUE) # Take action!
 #'
-BatchModifyFile <- function(Dir, FileName, KeyWordOldLocation, keyWordOld, keyWordNew = "", Replace = FALSE, SaveOld = TRUE){
+BatchModifyFile <- function(Dir, FileName, KeyWordOldLocation, keyWordOld, keyWordNew, Replace = FALSE, SaveOld = TRUE){
   ## check the prameters
   if ( !dir.exists(Dir)) {
     stop("Error, Please cheack the if the Dir exist!")
@@ -41,10 +41,11 @@ BatchModifyFile <- function(Dir, FileName, KeyWordOldLocation, keyWordOld, keyWo
     if( FileName %in% list.files(poss.dir)){
       file.find.index <- FALSE
       message(paste("# Found",FileName,"in",poss.dir))
-      message(paste("Checking file:",Dir,"/",FileName,sep = ""))
+      message(paste("Checking file:",poss.dir,FileName,sep = ""))
+      message(rep("-",100))
       ModifyAndBackup(Dir = poss.dir,FileName = FileName,KeyWordOldLocation = KeyWordOldLocation,
                       KeyWordOld = keyWordOld, KeyWordNew = keyWordNew, Replace = Replace, SaveOld = SaveOld)
-      message(paste("Checking for file:",Dir,"/",FileName," finished",sep = ""))
+      message(paste("Checking for file:",poss.dir,FileName," finished",sep = ""))
       message(paste(rep("#",100),collapse = ""))
     }
   }
@@ -65,7 +66,6 @@ ModifyAndBackup <- function(Dir,FileName,KeyWordOldLocation,KeyWordOld,KeyWordNe
   index <- TRUE
   while( length(line) != 0 ) {
     if( grepl(KeyWordOldLocation,line)){
-      message(rep("-",100))
       message("### Found target line:")
       message(paste(">>",line,sep = ""))
       if (grepl(KeyWordOld,line)) {
@@ -75,10 +75,13 @@ ModifyAndBackup <- function(Dir,FileName,KeyWordOldLocation,KeyWordOld,KeyWordNe
         message(paste(">>",gsub(KeyWordOld,KeyWordNew,line),sep = ""))
         writeLines(gsub(KeyWordOld,KeyWordNew,line),new)
       }else{
-        message(rep("-",100))
         message("### Key Word Old not found!")
-        writeLines(line,new)}
-    }else{ writeLines(line,new) }
+        writeLines(line,new)
+        }
+      message(rep("-",100))
+    }else{
+      writeLines(line,new)
+    }
     line=readLines(con,n=1) }
   close(con)
   close(new)
