@@ -41,6 +41,7 @@ BatchModifyFile <- function(Dir, FileName, KeyWordOldLocation, keyWordOld, keyWo
     if( FileName %in% list.files(poss.dir)){
       file.find.index <- FALSE
       message(paste("# Found",FileName,"in",poss.dir))
+      message(paste("Checking file",paste(Dir,FileName,sep = "/"),sep = "-"))
       ModifyAndBackup(Dir = poss.dir,FileName = FileName,KeyWordOldLocation = KeyWordOldLocation,
                       KeyWordOld = keyWordOld, KeyWordNew = keyWordNew, Replace = Replace, SaveOld = SaveOld)
       message(paste(rep("#",100),collapse = ""))
