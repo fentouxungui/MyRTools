@@ -48,8 +48,10 @@ BatchModifyFile <- function(Dir, FileName, KeyWordOldLocation, keyWordOld, keyWo
   }
   if (file.find.index) {
     message(paste("No files are found with file name",FileName,sep="-"))
-  } else {
+  } else if(Replace){
     message("Congratulations! All files are modified successfully!")
+  } else {
+    message("Checking finished!")
   }
 }
 
@@ -78,9 +80,15 @@ ModifyAndBackup <- function(Dir,FileName,KeyWordOldLocation,KeyWordOld,KeyWordNe
   close(new)
   if (index) { message("### Key words Location are Not found in line")
     file.remove(paste(Dir,"tmp.file",sep = "/")) }
-  if (!index & Replace) {
+  else if (Replace) {
     if (SaveOld) {
-      file.rename(paste(Dir,FileName,sep = "/"),paste(Dir,"/",FileName,".",format(Sys.time(), "%Y-%b-%d-%H:%M:%S"),sep = ""))}
-    file.rename(paste(Dir,"tmp.file",sep = "/"),paste(Dir,FileName,sep = "/"))
-  }else{ file.remove(paste(Dir,"tmp.file",sep = "/"))}
+      file.rename(paste(Dir,FileName,sep = "/"),paste(Dir,"/",FileName,".",format(Sys.time(), "%Y-%b-%d-%H:%M:%S"),sep = ""))
+      file.rename(paste(Dir,"tmp.file",sep = "/"),paste(Dir,FileName,sep = "/"))
+    } else {
+      file.remove(paste(Dir,FileName,sep = "/"))
+      file.rename(paste(Dir,"tmp.file",sep = "/"),paste(Dir,FileName,sep = "/"))
+    }
+
+  }
+  else { file.remove(paste(Dir,"tmp.file",sep = "/"))}
 }
