@@ -41,9 +41,10 @@ BatchModifyFile <- function(Dir, FileName, KeyWordOldLocation, keyWordOld, keyWo
     if( FileName %in% list.files(poss.dir)){
       file.find.index <- FALSE
       message(paste("# Found",FileName,"in",poss.dir))
-      message(paste("Checking file",paste(Dir,FileName,sep = "/"),sep = "-"))
+      message(paste("Checking file:",Dir,"/",FileName,sep = ""))
       ModifyAndBackup(Dir = poss.dir,FileName = FileName,KeyWordOldLocation = KeyWordOldLocation,
                       KeyWordOld = keyWordOld, KeyWordNew = keyWordNew, Replace = Replace, SaveOld = SaveOld)
+      message(paste("Checking for file:",Dir,"/",FileName," finished",sep = ""))
       message(paste(rep("#",100),collapse = ""))
     }
   }
@@ -64,15 +65,17 @@ ModifyAndBackup <- function(Dir,FileName,KeyWordOldLocation,KeyWordOld,KeyWordNe
   index <- TRUE
   while( length(line) != 0 ) {
     if( grepl(KeyWordOldLocation,line)){
-      message("### Key words Location are found in line:")
+      message(rep("-",100))
+      message("### Found target line:")
       message(paste(">>",line,sep = ""))
       if (grepl(KeyWordOld,line)) {
         index <- FALSE
         message("### Key Word Old found!")
         message("### Try to replace with new word:")
-        message(gsub(KeyWordOld,KeyWordNew,line))
+        message(paste(">>",gsub(KeyWordOld,KeyWordNew,line),sep = ""))
         writeLines(gsub(KeyWordOld,KeyWordNew,line),new)
       }else{
+        message(rep("-",100))
         message("### Key Word Old not found!")
         writeLines(line,new)}
     }else{ writeLines(line,new) }
