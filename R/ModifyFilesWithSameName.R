@@ -3,15 +3,15 @@
 #' This function going to modify files in readline mode.
 #' for example, when a package get update, you may need to change some parameters in your script to adapt to the new package version.
 #'
-#' @param Dir The directory where you target files under.
-#' @param FileName key word used to search your file name.
-#' @param KeyWordOldLocation Key word used to find lines which need modify.
+#' @param Dir The directory where you target files exist.
+#' @param FileName complete file name.
+#' @param KeyWordOldLocation Key word used to find target lines.
 #' @param KeyWordOld The old word needs to be replaced.
-#' @param KeyWordNew The new word which will replace the old word.
-#' @param Replace Whether to replace the old word. Default is FALSE.
-#' @param SaveOld Wheter to save the old file, if true, this will create a file with the date postfixed to the file name.
+#' @param KeyWordNew The new word.
+#' @param Replace Whether to replace the old file. Default is FALSE.
+#' @param SaveOld Wheter to save the old file, this will suffix date to the file name.
 #'
-#' @return
+#' @return message info for the whole process
 #' @export
 #'
 #' @examples

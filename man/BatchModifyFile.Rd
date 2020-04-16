@@ -9,28 +9,28 @@ BatchModifyFile(
   FileName,
   KeyWordOldLocation,
   keyWordOld,
-  keyWordNew = "",
+  keyWordNew,
   Replace = FALSE,
   SaveOld = TRUE
 )
 }
 \arguments{
-\item{Dir}{The directory where you target files under.}
+\item{Dir}{The directory where you target files exist.}
 
-\item{FileName}{key word used to search your file name.}
+\item{FileName}{complete file name.}
 
-\item{KeyWordOldLocation}{Key word used to find lines which need modify.}
+\item{KeyWordOldLocation}{Key word used to find target lines.}
 
-\item{Replace}{Whether to replace the old word. Default is FALSE.}
+\item{Replace}{Whether to replace the old file. Default is FALSE.}
 
-\item{SaveOld}{Wheter to save the old file, if true, this will create a file with the date postfixed to the file name.}
+\item{SaveOld}{Wheter to save the old file, this will suffix date to the file name.}
 
 \item{KeyWordOld}{The old word needs to be replaced.}
 
-\item{KeyWordNew}{The new word which will replace the old word.}
+\item{KeyWordNew}{The new word.}
 }
 \value{
-
+message info for the whole process
 }
 \description{
 This function going to modify files in readline mode.
