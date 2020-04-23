@@ -2,7 +2,7 @@
 % Please edit documentation in R/ModifyFilesWithSameName.R
 \name{BatchModifyFile}
 \alias{BatchModifyFile}
-\title{Modify files in batch mode}
+\title{Modify files in batch mode with fixed file name}
 \usage{
 BatchModifyFile(
   Dir,

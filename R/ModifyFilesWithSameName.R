@@ -1,4 +1,4 @@
-#' Modify files in batch mode
+#' Modify files in batch mode with fixed file name
 #'
 #' This function going to modify files in readline mode.
 #' for example, when a package get update, you may need to change some parameters in your script to adapt to the new package version.
@@ -35,7 +35,7 @@ BatchModifyFile <- function(Dir, FileName, KeyWordOldLocation, keyWordOld, keyWo
     stop("Error, Please cheack the if the Dir exist!")
   }
 
-  all.dirs <- list.dirs()
+  all.dirs <- list.dirs(Dir)
   file.find.index <- TRUE
   for (poss.dir in all.dirs) {
     if( FileName %in% list.files(poss.dir)){
@@ -58,6 +58,20 @@ BatchModifyFile <- function(Dir, FileName, KeyWordOldLocation, keyWordOld, keyWo
   }
 }
 
+#' Modify a specified file with fixed file name
+#'
+#' @param Dir The directory where you target files exist.
+#' @param FileName complete file name.
+#' @param KeyWordOldLocation Key word used to find target lines.
+#' @param KeyWordOld The old word needs to be replaced.
+#' @param KeyWordNew The new word.
+#' @param Replace Whether to replace the old file. Default is FALSE.
+#' @param SaveOld Wheter to save the old file, this will suffix date to the file name.
+#'
+#' @return
+#' @export
+#'
+#' @examples
 ModifyAndBackup <- function(Dir,FileName,KeyWordOldLocation,KeyWordOld,KeyWordNew,Replace = TRUE, SaveOld = TRUE){
   file.create(paste(Dir,"tmp.file",sep = "/"))
   new <- file(paste(Dir,"tmp.file",sep = "/"),"w")
