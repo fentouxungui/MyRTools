@@ -117,7 +117,7 @@ FindFiles <- function(Dir,
       }
     }
     if (length(poss.files) != 0) {
-      FilePaths <- append(FilePaths,paste(poss.dir,poss.files,sep = ""))
+      FilePaths <- append(FilePaths,paste(poss.dir,poss.files,sep = "/"))
     }
   }
   return(FilePaths)
