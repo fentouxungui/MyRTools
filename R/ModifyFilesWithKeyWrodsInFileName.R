@@ -145,8 +145,8 @@ ModifyAndBackupFile <- function(poss.files,
                                 Replace = TRUE,
                                 SaveOld = TRUE){
   Dir <- gsub(gsub(".*/","",poss.files),"",poss.files)
-  file.create(paste(Dir,"tmp.file",sep = "/"))
-  new <- file(paste(Dir,"tmp.file",sep = "/"),"w")
+  file.create(paste(Dir,"tmp.file",sep = ""))
+  new <- file(paste(Dir,"tmp.file",sep = ""),"w")
   con <- file(poss.files, "r")
   line=readLines(con,n=1)
   index <- TRUE
@@ -183,12 +183,12 @@ ModifyAndBackupFile <- function(poss.files,
   else if (Replace) {
     if (SaveOld) {
       file.rename(poss.files,paste(poss.files,".",format(Sys.time(), "%Y-%b-%d-%H:%M:%S"),sep = ""))
-      file.rename(paste(Dir,"tmp.file",sep = "/"),poss.files)
+      file.rename(paste(Dir,"tmp.file",sep = ""),poss.files)
     } else {
       file.remove(poss.files)
-      file.rename(paste(Dir,"tmp.file",sep = "/"),poss.files)
+      file.rename(paste(Dir,"tmp.file",sep = ""),poss.files)
     }
 
   }
-  else { file.remove(paste(Dir,"tmp.file",sep = "/"))}
+  else { file.remove(paste(Dir,"tmp.file",sep = ""))}
 }
