@@ -17,7 +17,7 @@ BatchModifyFileExtended("./man/",
                          Replace = FALSE,
                          SaveOld = TRUE)
 ```
-### 列出所有包含关键字的文件
+### 列出所有包含关键字的文件 - 路径加文件名
 ```r
 FindFiles(Dir,
           FileNameKeyWords,
