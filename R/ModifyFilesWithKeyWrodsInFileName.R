@@ -96,8 +96,8 @@ BatchModifyFileExtended <- function(Dir,
 #' @examples
 FindFiles <- function(Dir,
                       FileNameKeyWords,
-                      ignore.case,
-                      pattern){
+                      ignore.case = FALSE,
+                      pattern = NULL){
   all.dirs <- list.dirs(Dir)
   FilePaths <- c()
 
@@ -139,7 +139,7 @@ FindFiles <- function(Dir,
 #' @examples
 ModifyAndBackupFile <- function(poss.files,
                                 KeyWordOldLocation,
-                                ignore.case,
+                                ignore.case = FALSE,
                                 KeyWordOld,
                                 KeyWordNew,
                                 Replace = TRUE,
